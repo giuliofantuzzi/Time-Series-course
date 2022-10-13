@@ -67,10 +67,11 @@ summary(polymod3)$adj.r.squared
 #Ora che so quale polinomio usare, posso fare 2 cose:
 #(1)--> plottare la ts e sovrapporci il polinomio
 plot(unemp) #la serie storica di partenza
-lines(un.hat, col="red", lty=2) #il polinomio di regressione
 #(2)--> costruirmi il vettore degli y teorici
 unemp.hat <- ts(fitted(polymod2), start=c(1992,4), freq=4)
-#e di conseguenza ricavarmi i residui
+#(3)-->sovrappongo alla serie storica il polinomio di regressione
+lines(un.hat, col="red", lty=2) #il polinomio di regressione
+#(4)-->Mi ricavo i residui
 res<- unemp.hat - unemp
 #------------------------------------------------------------------
 #OSSERVAZIONE BONUS
