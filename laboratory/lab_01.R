@@ -15,7 +15,7 @@ unemployment_rate <- read.table("data/fig.2_1.dat", header=FALSE)
 #1)Plotto la prima(e unica colonna)
 plot(unemployment_rate[,1])
 #NOTA: però nelle ascisse ci sono gli indici...non il tempo!Quindi?
-#2)Non straggo la colonna, ma creo un oggetto di tipo TimeSeries
+#2)Non estraggo la colonna, ma creo un oggetto di tipo TimeSeries
 unemp <- ts(unemployment_rate[,1], start=c(1992,4), freq=4)
 class(unemp) #unemp è di tipo/classe ts
 plot(unemp)
@@ -27,7 +27,7 @@ plot(unemp)
 unemp_diff1 <- diff(unemp)
 #NOTA: se unemp era aveva n elementi, le differenze prime ne hanno n-1
 plot(unemp_diff1)
-abline(0,0, lt=2)#faccio sta linea per far vedere che le diff man mano decrescono
+abline(0,0, lt=2)#faccio sta linea orizzontale per far vedere che le diff man mano decrescono
 class(unemp_diff1) #essendo unemp di classe ts, anche le differenze prime lo sono!
 #Differenza delle differenze prime (CHE E' DIVERSA DALLA DIFFERENZA SECONDA)
 unemp_diff2 <- diff(diff(unemp))
@@ -72,12 +72,15 @@ unemp.hat <- ts(fitted(polymod2), start=c(1992,4), freq=4)
 #(3)-->sovrappongo alla serie storica il polinomio di regressione
 lines(un.hat, col="red", lty=2) #il polinomio di regressione
 #(4)-->Mi ricavo i residui
-res<- unemp.hat - unemp
+res<- unemp -unemp.hat 
 #------------------------------------------------------------------
 #OSSERVAZIONE BONUS
 #Una serie può essere scomposta: trend+ stagionalità+ciclo+ errore casuale
 plot(unemp)
 #E' banale vedere che non è stazionaria. Posso detrendizzarla:
 plot(unemp - fitted(polymod2))
-#sembra già più stazionaria...bisognerebbe anche vedere le altre componenti
-
+#NOTA: senza fare unemp-fitted(polymod), potevo direttamente plottare i residui
+#aggiungiamo residui sul grafico che c'era già, così da dimostrare che si sovrappone perfettamente
+lines(res, col=r)
+#La serie detrendizzata sembra già più stazionaria
+#bisognerebbe però anche vedere le altre componenti (es stagionalità)
