@@ -162,7 +162,7 @@ affordability_ita<-gdp_real_cap_ita[-length(gdp_real_cap_ita)]/hp_base00_real_y_
 affordability_irl<-gdp_real_cap_irl[-length(gdp_real_cap_irl)]/hp_base00_real_y_irl
 affordability_dnk<-gdp_real_cap_dnk[-length(gdp_real_cap_dnk)]/hp_base00_real_y_dnk
 plot(ts(affordability_ita, start=c(2000,1), frequency = 1), ylim=c(1.9,5.2),
-     col=2, xlab="Time", ylab="REAL HP/REAL GDP CAPITA",
+     col=2, xlab="Time", ylab="REAL GDP CAPITA/REAL HP",
      main="Confronto AFFORDABILITY")
 lines(ts(affordability_irl, start=c(2000,1), frequency = 1), type="l",col=3)
 lines(ts(affordability_dnk, start=c(2000,1), frequency = 1), type="l",col=4)
