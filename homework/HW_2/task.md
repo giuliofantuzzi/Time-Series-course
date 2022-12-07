@@ -7,4 +7,5 @@ R analysis about:
 - Unemployment rate
 
 Time series of the following countries: *Italy - Ireland - Denmark*
+
 Focus on: moving average, exponential smoothing, arima models
