@@ -7,3 +7,4 @@ R analysis about:
 - Unemployment rate
 
 Time series of the following countries: *Italy - Ireland - Denmark*
+Focus on: polynomial regression
